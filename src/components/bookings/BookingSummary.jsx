@@ -18,7 +18,7 @@ const BookingSummary = ({booking, payment, isFormValid, onConfirm}) => {
             setIsProcessingPayment(false)
             setIsBookingConfirmed(true)
             onConfirm()
-        }, 3000)
+        }, 2000)
     }
   
     useEffect(()=>{
@@ -37,10 +37,10 @@ const BookingSummary = ({booking, payment, isFormValid, onConfirm}) => {
 
   return (
     <div className="row">
-			<div className="col-md-6"></div>
+			<div className="col-md-8"></div>
       <div className='card card-body mt-5'>
         <h4>Reservation Summary</h4>
-        <p>Full name: <strong>{booking.guestName}</strong></p>
+        <p>Full name: <strong>{booking.guestFullName}</strong></p>
         <p>Email: <strong>{booking.guestEmail}</strong></p>
         <p>Check In Day: <strong>{moment(booking.checkInDate).format("MM Do YYYY")}</strong></p>
         <p>Check Out Day: <strong>{moment(booking.checkOutDate).format("MM Do YYYY")}</strong></p>

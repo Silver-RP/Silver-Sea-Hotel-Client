@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import "../../index.css"
 
 
 const Admin = () => {
@@ -9,8 +10,8 @@ const Admin = () => {
     <section className='container mt-5'>
       <h2>Welcome to Admin panel</h2>
       <hr/>
-      {/* <Link to={"/add/new-room"}> Manage Rooms</Link> */}
-      <Link to={"/existing-rooms"}>Manage Rooms</Link> <br />
+      <Link to={"/existing-rooms"} className="link-style1"> Manage Rooms</Link> <br /> <br />
+      <Link to={"/existing-bookings"} className="link-style1"> Manage Bookings</Link> <br />
     </section>
   )
 }

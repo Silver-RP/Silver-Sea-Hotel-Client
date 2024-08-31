@@ -64,7 +64,11 @@ const BookingForm = () => {
     }
 
     const isCheckOutDateValid = () =>{
-      if(!moment(booking.checkOutDate).isSameOrAfter(moment(booking.checkInDate))){
+      //check if check in day is before current day
+      if(!moment(booking.checkInDate).isSameOrAfter(moment().format("YYYY-MM-DD"))){
+        setErrorMsg("Check in date must be today or after today")
+        return false
+      }else if(!moment(booking.checkOutDate).isSameOrAfter(moment(booking.checkInDate))){
         setErrorMsg("Check out date must be after check in date")
         return false
       }else{
@@ -98,9 +102,9 @@ const BookingForm = () => {
 
   return (
     <>
-       <div className='container mt-5'>
+       <div className='container'>
         <div className='row'>
-          <div className='col-md-6 mb-5'>
+          <div className='col-md-5 mb-5'>
             <div className='card card-body mt-5'>
               <h4 className='card-title'> Reserve room </h4>
               <Form noValidate validated={validated} onSubmit={handleSubmit}>
@@ -158,7 +162,7 @@ const BookingForm = () => {
                                   placeholder='Number of Children' min={0} onChange={handleInputChange} 
                       />
                     </div>
-                    {errorMsg && <p className="text-danger"> {errorMsg} </p>}
+                    {/* {errorMsg && <p className="text-danger"> {errorMsg} </p>} */}
                   </div>
                 </fieldset>
                 <div className='form-group mt-2 mb-2'>
@@ -167,7 +171,7 @@ const BookingForm = () => {
               </Form>
             </div>
           </div>
-          <div className='col-md-6'>
+          <div className='col-md-5'>
             {isSubmitted && (
               <BookingSummary 
                 booking={booking}

@@ -1,0 +1,1 @@
+bookingInfo={bookingInfo} 
